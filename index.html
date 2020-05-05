@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clock</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Lato', sans-serif; 
+	box-sizing: border-box;
+	color: #fff;
+}
+
+
+body{
+	display: flex;	
+	justify-content: center;
+	min-width: 100vh;
+	align-content: center;
+	background-color: #060a1f;
+
+}
+
+#Clock{
+
+	height: 400px;
+	width: 600px;
+	position: relative;
+	top: 100px;
+}
+
+#Clock #Time {
+	display: flex;
+	justify-content: center;
+	-webkit-box-reflect: below 1px linear-gradient(transparent,#0007);
+}
+
+#Clock #Time div{
+	position: relative;
+	margin: 20px 10px 0;
+	}
+
+#Clock #Time div span{
+	position: relative;
+	display: block;
+	width: 150px;
+	height: 150px;
+	background: #2196f3;
+	font-weight: 300;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 4.5rem;
+	z-index: 10;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.2);
+}
+
+
+.heading{
+	/*color: #fff;*/
+	font-weight: 700;
+	font-size: 1rem;
+	letter-spacing: 0.4rem;
+	text-align: center;
+	margin: 10px auto;
+}
+
+#Clock #Time div span:nth-child(2){
+	height: 30px;
+	width: 150px;
+	font-size: 1rem;
+	letter-spacing: 0.2rem;
+	font-weight: 500;
+	box-shadow: none;
+	z-index: 9;
+	text-transform: uppercase;
+	background: #127fd6;
+}
+
+#Clock #Time div:last-child span{
+	background: #ff006a;
+}
+
+</style>
+
+<body>
+
+<div id="Clock">
+	<div class="heading">
+		<h1>THE TIME IS NOW</h1>
+	</div>
+
+	<div id="Time">
+		<div>
+			<span class="hr">00</span>
+			<span>Hours</span>
+		</div>
+
+		<div>
+			<span class="min">00</span>
+			<span>Minutes</span>
+		</div>
+
+		<div>
+			<span class="sc">00</span>
+			<span>Seconds</span>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	function clock(){
+clock.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+
+var hour = document.querySelector("#Time .hr");
+var minute = document.querySelector("#Time .min");
+var second = document.querySelector("#Time .sc");
+
+var h = new Date().getHours()% 12 || 12; ;
+var m = new Date().getMinutes();
+var s = new Date().getSeconds();
+
+
+hour.innerHTML = h;
+minute.innerHTML = m;
+second.innerHTML = s;
+
+
+}
+
+var interval = setInterval(clock , 1000);
+
+</script>
+</body>
+
+</html>
